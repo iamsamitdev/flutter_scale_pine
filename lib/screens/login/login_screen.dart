@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_scale/screens/dashboard/dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -82,6 +83,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           // ลองแสดงค่าที่บันทึกไว้
                           print(_email);
                           print(_password);
+                          if(_email == 'admin@email.com' && _password == '1234'){
+                            // ส่งไปหน้า dashboard
+                            Navigator.pushReplacement(
+                              context, 
+                              MaterialPageRoute(builder: (context) => const DashboardScreen())
+                            );
+                          }else{
+                            // แจ้งเตือนเมื่อ login ไม่ผ่าน
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                behavior: SnackBarBehavior.floating,
+                                content: Text('Email หรือ Password ไม่ถูกต้อง'),
+                                backgroundColor: Colors.red,
+                              )
+                            );
+                          }
                         }
                       },
                       style: ElevatedButton.styleFrom(
