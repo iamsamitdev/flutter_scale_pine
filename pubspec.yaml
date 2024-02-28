@@ -39,6 +39,9 @@ dependencies:
   # สำหรับการทำหน้าต้อนรับ
   introduction_screen: ^3.1.12
 
+  # สำหรับบันทึกข้อมูลลงในเครื่อง
+  shared_preferences: ^2.2.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_scale/screens/welcome/welcome_screen.dart';
 import 'package:flutter_scale/themes/styles.dart';
 
@@ -11,6 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // อนุญาติว่าให้หมุนทิศทางใดได้บ้าง
+    // SystemChrome.setPreferredOrientations(
+    //   [
+    //     DeviceOrientation.portraitUp,
+    //   ]
+    // );
+
     return MaterialApp(
       theme: AppTheme.lightTheme,
       home: const WelcomeScreen(),

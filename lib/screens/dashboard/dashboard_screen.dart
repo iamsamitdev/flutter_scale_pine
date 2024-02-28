@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_scale/screens/login/login_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -14,6 +15,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(
         title: const Text('Dashboard'),
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            onPressed: (){
+              Navigator.pushReplacement(
+                context, 
+                MaterialPageRoute(builder: (context) => const LoginScreen())
+              );
+            },
+            icon: const Icon(Icons.logout)
+          )
+        ],
       ),
       body: const Center(
         child: Text('Dashboard Screen'),

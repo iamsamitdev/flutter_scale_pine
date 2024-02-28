@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_scale/screens/dashboard/dashboard_screen.dart';
 
@@ -19,6 +20,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    // อนุญาติว่าให้หมุนทิศทางใดได้บ้าง
+    SystemChrome.setPreferredOrientations(
+      [
+        DeviceOrientation.portraitUp,
+      ]
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
