@@ -18,6 +18,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: const Center(
         child: Text('Dashboard Screen'),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value){
+          print(value);
+        },
+        currentIndex: 0,
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pie_chart),
+            label: 'Report'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            label: 'Notification'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile'
+          ),
+        ],
+      ),
     );
   }
 }
