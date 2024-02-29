@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_scale/screens/login/login_screen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -14,11 +15,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   final introKey = GlobalKey<IntroductionScreenState>();
 
-  void _onIntroEnd(context) {
+  void _onIntroEnd(context) async {
+
+    // สร้าง SharedPreferences และเก็บค่าว่าเป็นการเปิดแอพครั้งแรก
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('welcomeStatus', true);
 
     // เปลี่ยนไปหน้า login
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => LoginScreen()),
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
     );
     
   }

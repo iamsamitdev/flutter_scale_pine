@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:flutter_scale/screens/dashboard/dashboard_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -84,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         // ถ้า form ผ่าน validate ให้ทำการบันทึกค่า
                         if(_formKeyLogin.currentState!.validate()){
                           // บันทึกค่า
@@ -93,6 +94,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           print(_email);
                           print(_password);
                           if(_email == 'admin@email.com' && _password == '1234'){
+
+                              // สร้าง SharedPreferences และเก็บค่าว่าเป็นการเปิดแอพครั้งแรก
+                              SharedPreferences prefs = await SharedPreferences.getInstance();
+                              prefs.setBool('loginStatus', true);
+
                             // ส่งไปหน้า dashboard
                             Navigator.pushReplacement(
                               context, 
