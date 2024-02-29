@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_scale/models/plc_machine_model.dart';
 import 'package:flutter_scale/screens/login/login_screen.dart';
 import 'package:flutter_scale/services/machine_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,11 +15,17 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
 
+  // สร้างตัวแปร List เพื่อเก็บข้อมูลเครื่องจักรที่ได้จาก API
+  List<PlcMachineModel> machineList = [];
+
   // ทดสอบการอ่านข้อมูลเครื่องจักรจาก API
   void _getMachineData() async {
     var data = await MachineAPI().getAllMachine();
-    var jsonData = jsonEncode(data);
-    print(jsonData);
+    setState(() {
+      machineList = data;
+    });
+    // var jsonData = jsonEncode(data);
+    // print(jsonData);
   }
 
   // ฟังก์ชันที่ทำงานก่อนการแสดงผลหน้าจอ
@@ -53,8 +60,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
           )
         ],
       ),
-      body: const Center(
-        child: Text('Dashboard Screen'),
+      body: ListView.builder(
+        itemCount: 20,
+        itemBuilder: (context, index){
+          return ListTile(
+            title: Text('Machine $index'),
+            subtitle: const Text('Status: Running'),
+            leading: const Icon(Icons.settings),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: (){
+              print('Machine $index');
+            },
+          );
+        }
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value){
