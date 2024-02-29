@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_scale/app_router.dart';
 import 'package:flutter_scale/models/plc_machine_model.dart';
 import 'package:flutter_scale/screens/login/login_screen.dart';
 import 'package:flutter_scale/screens/machinedetail/machine_detail_screen.dart';
@@ -53,10 +54,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               prefs.remove('loginStatus');
      
               // กลับไปหน้า Login
-              Navigator.pushReplacement(
-                context, 
-                MaterialPageRoute(builder: (context) => const LoginScreen())
-              );
+              Navigator.pushReplacementNamed(context, AppRouter.login);
             },
             icon: const Icon(Icons.logout)
           )
@@ -77,11 +75,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: (){
               // print('Machine $index');
-              Navigator.push(
+              Navigator.pushNamed(
                 context, 
-                MaterialPageRoute(
-                  builder: (context) => MachineDetailScreen(),
-                )
+                AppRouter.machineDetail,
+                arguments: machine.toJson()
               );
             },
           );

@@ -17,9 +17,15 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
   
   @override
   Widget build(BuildContext context) {
+
+    // รับค่าที่ส่งมาจากหน้า dashboard_screen.dart
+    final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
+
+    print(arguments);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Machine 1'),
+        title: Text(arguments['name']),
       ),
       body: ListView(
         children: [
@@ -38,7 +44,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                   children: [
                     Text('ID: '),
                     Text(
-                      '1',
+                      arguments['id'].toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -49,7 +55,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                   children: [
                     Text('Name: '),
                     Text(
-                      'Machine 1',
+                      arguments['name'],
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -60,7 +66,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                   children: [
                     Text('Location: '),
                     Text(
-                      'Factory 1',
+                      arguments['location'] ,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -71,7 +77,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                   children: [
                     Text('Status: '),
                     Text(
-                      'ทำงานปกติ',
+                      arguments['status'] ,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -82,7 +88,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                   children: [
                     Text('Maintenence: '),
                     Text(
-                      'ไม่ต้องซ่อมบำรุง',
+                      arguments['maintenanceStatus'].toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -93,7 +99,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                   children: [
                     Text('รุ่น: '),
                     Text(
-                      'XYZ-123',
+                      'Model XYZ-1234',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],

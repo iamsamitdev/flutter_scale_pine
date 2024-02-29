@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_scale/app_router.dart';
-import 'package:flutter_scale/screens/login/login_screen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:flutter/widgets.dart';
-import 'package:flutter_scale/screens/dashboard/dashboard_screen.dart';
+import 'package:flutter_scale/app_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -100,10 +99,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               prefs.setBool('loginStatus', true);
 
                             // ส่งไปหน้า dashboard
-                            Navigator.pushReplacement(
-                              context, 
-                              MaterialPageRoute(builder: (context) => const DashboardScreen())
-                            );
+                            Navigator.pushReplacementNamed(context, AppRouter.dashboard);
+
                           }else{
                             // แจ้งเตือนเมื่อ login ไม่ผ่าน
                             ScaffoldMessenger.of(context).showSnackBar(
