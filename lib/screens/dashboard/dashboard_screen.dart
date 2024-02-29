@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_scale/models/plc_machine_model.dart';
 import 'package:flutter_scale/screens/login/login_screen.dart';
+import 'package:flutter_scale/screens/machinedetail/machine_detail_screen.dart';
 import 'package:flutter_scale/services/machine_api.dart';
 import 'package:flutter_scale/utils/constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -75,7 +76,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: (){
-              print('Machine $index');
+              // print('Machine $index');
+              Navigator.push(
+                context, 
+                MaterialPageRoute(
+                  builder: (context) => const MachineDetailScreen()
+                )
+              );
             },
           );
         }

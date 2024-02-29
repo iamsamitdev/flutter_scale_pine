@@ -10,22 +10,21 @@ class MachineDetailScreen extends StatefulWidget {
 class _MachineDetailScreenState extends State<MachineDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Image.asset('https://www.itgenius.co.th/sandbox_api/plcapi/images/machines/machine-1.jpg'),
-        const SizedBox(height: 10),
-        const Text(
-          'Machine 1', 
-          textAlign: TextAlign.center, 
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Machine 1'),
         ),
-        const SizedBox(height: 10),
-        const Text(
-          'Location: ตึก A ชั้น 2', 
-          textAlign: TextAlign.center, 
-          style: TextStyle(fontSize: 16)
+        body: ListView(
+          children: const [
+            SizedBox(height: 10),
+            Text('Machine 1',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
+            Text('Location: ตึก A ชั้น 2',
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
+          ],
         ),
-      ],
-    );
+        );
   }
 }
