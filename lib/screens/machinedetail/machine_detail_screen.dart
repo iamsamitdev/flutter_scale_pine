@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_scale/utils/constant.dart';
 
 class MachineDetailScreen extends StatefulWidget {
   const MachineDetailScreen({super.key});
@@ -21,7 +22,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
     // รับค่าที่ส่งมาจากหน้า dashboard_screen.dart
     final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
 
-    print(arguments);
+    // print(arguments['image_url']);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +31,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
       body: ListView(
         children: [
           Image.network(
-            'https://www.itgenius.co.th/sandbox_api/plcapi/images/machines/machine-1.jpg',
+           baseURLAPIPLC + arguments['image_url'],
             height: 300.0,
             fit: BoxFit.cover,
           ),
