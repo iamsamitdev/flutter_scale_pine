@@ -69,7 +69,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
           return ListTile(
             title: Text(machine.name!),
             subtitle: Text(machine.status!),
-            leading: Image.network(Uri.parse(baseURLAPIPLC+machine.imageUrl!).toString()),
+            leading: Image.network(
+              Uri.parse(baseURLAPIPLC+machine.imageUrl!).toString(),
+              width: 80,
+            ),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: (){
               print('Machine $index');
