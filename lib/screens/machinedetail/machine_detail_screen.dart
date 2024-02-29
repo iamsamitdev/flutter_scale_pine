@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class MachineDetailScreen extends StatefulWidget {
@@ -22,7 +24,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
             fit: BoxFit.cover,
           ),
           const SizedBox(height: 10),
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(8.0),
             child: Column(
               children: [
@@ -119,8 +121,32 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Daily check: '),
+                    Checkbox(
+                      value: false, 
+                      onChanged: (value){}
+                    ),
                   ],
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Weekly check: '),
+                    Checkbox(
+                      value: true, 
+                      onChanged: (value){}
+                    ),
+                  ],
+                ),
+                ElevatedButton(
+                  onPressed: (){},
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(double.infinity, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                  ),
+                  child: Text('SUBMIT'),
+                )
               ],
             ),
           )
