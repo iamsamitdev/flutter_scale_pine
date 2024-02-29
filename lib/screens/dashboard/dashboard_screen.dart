@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_scale/screens/login/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -16,8 +17,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
         title: const Text('Dashboard'),
         automaticallyImplyLeading: false,
         actions: [
+          // Logout Button
           IconButton(
-            onPressed: (){
+            onPressed: () async {
+              // อ่านค่า SharedPreferences
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              // ลบค่า SharedPreferences
+              prefs.remove('loginStatus');
+     
+              // กลับไปหน้า Login
               Navigator.pushReplacement(
                 context, 
                 MaterialPageRoute(builder: (context) => const LoginScreen())

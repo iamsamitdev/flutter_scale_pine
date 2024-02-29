@@ -20,8 +20,10 @@ void main() async {
   // ตรวจสอบว่าเคยผ่านหน้า Welcome หรือยัง
   if(prefs.getBool('welcomeStatus') == true) {
     initRoute = const LoginScreen();
-  } else if (prefs.getBool('loginStatus') == true) {
-    initRoute = const DashboardScreen();
+    // ตรวจสอบว่าเคย Login หรือยัง
+    if(prefs.getBool('loginStatus') == true) {
+      initRoute = const DashboardScreen();
+    }
   } else {
     initRoute = const WelcomeScreen();
   }
