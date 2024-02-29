@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_scale/screens/login/login_screen.dart';
+import 'package:flutter_scale/services/machine_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -10,6 +13,21 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+
+  // ทดสอบการอ่านข้อมูลเครื่องจักรจาก API
+  void _getMachineData() async {
+    var data = await MachineAPI().getAllMachine();
+    var jsonData = jsonEncode(data);
+    print(jsonData);
+  }
+
+  // ฟังก์ชันที่ทำงานก่อนการแสดงผลหน้าจอ
+  @override
+  void initState() {
+    super.initState();
+    _getMachineData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

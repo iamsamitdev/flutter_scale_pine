@@ -13,7 +13,7 @@ class MachineAPI {
   // อ่านข้อมูลเครื่องจักรจาก API
   Future<List<PlcMachineModel>> getAllMachine() async {
     final response = await http.get(
-      Uri.parse(baseURLAPIPLC),
+      Uri.parse('${baseURLAPIPLC}machine.php'),
       headers: _setHeaders(),
     );
     // เช็คว่ามีข้อมูลที่ส่งมาหรือไม่
