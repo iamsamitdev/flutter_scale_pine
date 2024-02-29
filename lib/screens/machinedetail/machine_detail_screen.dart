@@ -113,13 +113,12 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 20),s
                 Divider(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Daily check: '),
-
                   ],
                 ),
               ],
