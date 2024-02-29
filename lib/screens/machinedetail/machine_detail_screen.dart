@@ -19,7 +19,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Machine 1'),
+        title: Text('Machine 1'),
       ),
       body: ListView(
         children: [
