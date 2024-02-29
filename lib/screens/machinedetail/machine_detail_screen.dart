@@ -10,6 +10,11 @@ class MachineDetailScreen extends StatefulWidget {
 }
 
 class _MachineDetailScreenState extends State<MachineDetailScreen> {
+  
+  // ตัวแปรไว้เก็บสถานะของ Checkbox
+  bool dailyCheck = false;
+  bool weeklyCheck = false;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,8 +127,12 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                   children: [
                     Text('Daily check: '),
                     Checkbox(
-                      value: false, 
-                      onChanged: (value){}
+                      value: dailyCheck, 
+                      onChanged: (value){
+                        setState(() {
+                          dailyCheck = value!;
+                        });
+                      }
                     ),
                   ],
                 ),
@@ -132,8 +141,12 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                   children: [
                     Text('Weekly check: '),
                     Checkbox(
-                      value: true, 
-                      onChanged: (value){}
+                      value: weeklyCheck, 
+                      onChanged: (value){
+                        setState(() {
+                          weeklyCheck = value!;
+                        });
+                      }
                     ),
                   ],
                 ),
