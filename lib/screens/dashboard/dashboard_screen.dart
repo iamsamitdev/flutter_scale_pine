@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_scale/models/plc_machine_model.dart';
 import 'package:flutter_scale/screens/login/login_screen.dart';
 import 'package:flutter_scale/services/machine_api.dart';
+import 'package:flutter_scale/utils/constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -61,12 +62,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ],
       ),
       body: ListView.builder(
-        itemCount: 20,
+        itemCount: machineList.length,
         itemBuilder: (context, index){
+          // สร้างตัวแปรเพื่อเก็บข้อมูลเครื่องจักรแต่ละตัว
+          final machine = machineList[index];
           return ListTile(
-            title: Text('Machine $index'),
-            subtitle: const Text('Status: Running'),
-            leading: const Icon(Icons.settings),
+            title: Text(machine.name!),
+            subtitle: Text(machine.status!),
+            leading: Image.network(Uri.parse(baseURLAPIPLC+machine.imageUrl!).toString()),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: (){
               print('Machine $index');
