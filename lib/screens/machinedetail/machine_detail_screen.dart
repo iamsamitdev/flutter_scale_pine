@@ -113,7 +113,7 @@ class _MachineDetailScreenState extends State<MachineDetailScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),s
+                SizedBox(height: 20),
                 Divider(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
