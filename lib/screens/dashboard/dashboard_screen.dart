@@ -60,29 +60,34 @@ class _DashboardScreenState extends State<DashboardScreen> {
           )
         ],
       ),
-      body: ListView.builder(
-        itemCount: machineList.length,
-        itemBuilder: (context, index){
-          // สร้างตัวแปรเพื่อเก็บข้อมูลเครื่องจักรแต่ละตัว
-          final machine = machineList[index];
-          return ListTile(
-            title: Text(machine.name!),
-            subtitle: Text(machine.status!),
-            leading: Image.network(
-              Uri.parse(baseURLAPIPLC+machine.imageUrl!).toString(),
-              width: 80,
-            ),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: (){
-              // print('Machine $index');
-              Navigator.pushNamed(
-                context, 
-                AppRouter.machineDetail,
-                arguments: machine.toJson()
-              );
-            },
-          );
-        }
+      body: RefreshIndicator(
+        onRefresh: () async {
+          setState(() {});
+        },
+        child: ListView.builder(
+          itemCount: machineList.length,
+          itemBuilder: (context, index){
+            // สร้างตัวแปรเพื่อเก็บข้อมูลเครื่องจักรแต่ละตัว
+            final machine = machineList[index];
+            return ListTile(
+              title: Text(machine.name!),
+              subtitle: Text(machine.status!),
+              leading: Image.network(
+                Uri.parse(baseURLAPIPLC+machine.imageUrl!).toString(),
+                width: 80,
+              ),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: (){
+                // print('Machine $index');
+                Navigator.pushNamed(
+                  context, 
+                  AppRouter.machineDetail,
+                  arguments: machine.toJson()
+                );
+              },
+            );
+          }
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value){
