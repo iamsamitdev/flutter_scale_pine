@@ -4,7 +4,6 @@ import 'package:flutter_scale/screens/machinedetail/machine_detail_screen.dart';
 import 'package:flutter_scale/screens/welcome/welcome_screen.dart';
 
 class AppRouter {
-
   // Router Map Key
   static const String welcome = 'welcome';
   static const String login = 'login';
@@ -18,5 +17,4 @@ class AppRouter {
     dashboard: (context) => const DashboardScreen(),
     machineDetail: (context) => const MachineDetailScreen(),
   };
-
 }

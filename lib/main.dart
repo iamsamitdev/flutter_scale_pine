@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_scale/screens/dashboard/dashboard_screen.dart';
-import 'package:flutter_scale/screens/login/login_screen.dart';
-// import 'package:flutter/services.dart';
-import 'package:flutter_scale/screens/welcome/welcome_screen.dart';
+import 'package:flutter_scale/app_router.dart';
 import 'package:flutter_scale/themes/styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,13 +16,13 @@ void main() async {
 
   // ตรวจสอบว่าเคยผ่านหน้า Welcome หรือยัง
   if(prefs.getBool('welcomeStatus') == true) {
-    initRoute = const LoginScreen();
+    initRoute = AppRouter.welcome;
     // ตรวจสอบว่าเคย Login หรือยัง
     if(prefs.getBool('loginStatus') == true) {
-      initRoute = const DashboardScreen();
+      initRoute = AppRouter.dashboard;
     }
   } else {
-    initRoute = const WelcomeScreen();
+    initRoute = AppRouter.welcome;
   }
 
   runApp(const MyApp());
@@ -46,7 +43,8 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       theme: AppTheme.lightTheme,
-      home: initRoute,
+      initialRoute: initRoute,
+      routes: AppRouter.routes,
     );
   }
 }
